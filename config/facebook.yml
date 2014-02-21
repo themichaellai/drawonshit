@@ -1,0 +1,4 @@
+development:
+  app_id: ENV['DRAW_APP_ID']
+  secret_key: ENV['DRAW_APP_SECRET']
+  callback_url: http://lvh.me:4000/

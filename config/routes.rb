@@ -1,4 +1,7 @@
 Drawonshit::Application.routes.draw do
+  devise_for :users, :controllers => { omniauth_callbacks:"omniauth_callbacks" }
+
+  root to: "static#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
