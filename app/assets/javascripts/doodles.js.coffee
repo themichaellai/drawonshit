@@ -32,4 +32,4 @@ $(document).ready ->
 
       $('#doodle_image').val(binderCanvas.toDataURL())
       console.log binderCanvas.toDataURL()
-      #$(this).off('submit').submit()
+      $(this).off('submit').submit()
