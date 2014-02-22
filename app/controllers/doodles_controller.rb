@@ -1,6 +1,6 @@
 class DoodlesController < ApplicationController
   def index
-    @doodles = Doodle.all
+    @doodles = Doodle.order(:votes)
   end
 
   def new
@@ -18,12 +18,13 @@ class DoodlesController < ApplicationController
 
   def recent
     @doodles = Doodle.find(order: 'created_at DESC')
+    render 'index'
   end
 
   def upvote
     @doodle = Doodle.find(params[:id])
     @doodle.liked_by current_user
-    render json: {upvotes: @doodle.votes.up.size, 
+    render json: {upvotes: @doodle.votes.up.size,
                   downvotes: @doodle.votes.down.size,
                   id: @doodle.id}
   end
@@ -31,7 +32,7 @@ class DoodlesController < ApplicationController
   def downvote
     @doodle = Doodle.find(params[:id])
     @doodle.downvote_from current_user
-    render json: {upvotes: @doodle.votes.up.size, 
+    render json: {upvotes: @doodle.votes.up.size,
                   downvotes: @doodle.votes.down.size,
                   id: @doodle.id}
   end

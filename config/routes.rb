@@ -3,7 +3,9 @@ Drawonshit::Application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks:"omniauth_callbacks" }
 
   resources :doodles, only: [:index, :show, :create] do 
-    get 'draw', on: :collection
+    collection do
+      get 'recent'
+    end
     member do
       put "upvote", to: "doodles#upvote" 
       put "downvote", to: "doodles#downvote" 
