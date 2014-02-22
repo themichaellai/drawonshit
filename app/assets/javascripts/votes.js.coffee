@@ -37,5 +37,4 @@ updateVotes = (obj) ->
   up = obj['upvotes']
   down = obj['downvotes']
   
-  $("#"+id).find('.upvotes').html(up)
-  $("#"+id).find('.downvotes').html(down)
+  $("#"+id).find('.score').html(up-down)
