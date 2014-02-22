@@ -5,9 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    - if @doodle
-    
-      - provide :metadata , "<meta property='og:image' content=#{doodle_path(@doodle)}>"
+    = yield :metadata
   %body
     #fb-root
     :javascript
