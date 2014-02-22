@@ -16,6 +16,7 @@
 
   .upvote, .downvote, .score, .text {
     font-size: 50px;
+    text-align: center;
   }
 
   .score {
@@ -31,7 +32,9 @@
   }
 
 }
-
+.social {
+  display: inline;
+}
 #sketch-tools {
   margin: 10px 0 10px;
 }

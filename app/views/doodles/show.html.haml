@@ -1,3 +1,4 @@
+- provide :metadata , "<meta property='og:image' content=#{doodle_path(@doodle)}>"
 = render partial: "doodle", locals: {doodle: @doodle}
 - if current_user_is_admin?
   = link_to 'Delete', doodle_path(@doodle), method: :delete
