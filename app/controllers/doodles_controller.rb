@@ -17,7 +17,23 @@ class DoodlesController < ApplicationController
   end
 
   def recent
-    @doodles = Doodle.order(:created_at)
+    @doodles = Doodle.find(order: 'created_at DESC')
     render 'index'
+  end
+
+  def upvote
+    @doodle = Doodle.find(params[:id])
+    @doodle.liked_by current_user
+    render json: {upvotes: @doodle.votes.up.size,
+                  downvotes: @doodle.votes.down.size,
+                  id: @doodle.id}
+  end
+
+  def downvote
+    @doodle = Doodle.find(params[:id])
+    @doodle.downvote_from current_user
+    render json: {upvotes: @doodle.votes.up.size,
+                  downvotes: @doodle.votes.down.size,
+                  id: @doodle.id}
   end
 end

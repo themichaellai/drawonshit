@@ -13,7 +13,7 @@ gem 'friendly_id', '~> 4.0.0'
 gem 'bcrypt-ruby'
 gem 'omniauth-facebook'
 gem 'devise'
-
+gem 'acts_as_votable', '~> 0.8.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 # Gems used only for assets and not required
 # in production environments by default.
