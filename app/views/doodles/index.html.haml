@@ -3,5 +3,5 @@
     = image_tag doodle.image.url
     .upvotes= doodle.votes.up.size
     .downvotes= doodle.votes.down.size
-    = link_to "Upvote", upvote_doodle_path(doodle), method: :put
-    = link_to "Downvote", downvote_doodle_path(doodle), method: :put
+    .upvote{id: "doodle-up-#{doodle.id}"}= link_to "Upvote", upvote_doodle_path(doodle), method: :put, remote: true
+    .downvote{id: "doodle-down-#{doodle.id}"}= link_to "Downvote", downvote_doodle_path(doodle), method: :put, remote: true

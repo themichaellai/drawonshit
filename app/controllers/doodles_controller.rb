@@ -23,12 +23,16 @@ class DoodlesController < ApplicationController
   def upvote
     @doodle = Doodle.find(params[:id])
     @doodle.liked_by current_user
-    redirect_to :doodles
+    render json: {upvotes: @doodle.votes.up.size, 
+                  downvotes: @doodle.votes.down.size,
+                  id: @doodle.id}
   end
 
   def downvote
     @doodle = Doodle.find(params[:id])
     @doodle.downvote_from current_user
-    redirect_to :doodles
+    render json: {upvotes: @doodle.votes.up.size, 
+                  downvotes: @doodle.votes.down.size,
+                  id: @doodle.id}
   end
 end
