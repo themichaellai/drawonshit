@@ -1,4 +1,6 @@
 class DoodlesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :recent]
+
   def index
     @doodles = Doodle.order(:votes)
   end
@@ -9,6 +11,7 @@ class DoodlesController < ApplicationController
 
   def create
     @doodle = Doodle.new params[:doodle]
+    @doodle.user = current_user
     if @doodle.save
       redirect_to doodles_path
     else
@@ -17,7 +20,7 @@ class DoodlesController < ApplicationController
   end
 
   def recent
-    @doodles = Doodle.find(order: 'created_at DESC')
+    @doodles = Doodle.order('created_at DESC')
     render 'index'
   end
 
@@ -35,5 +38,10 @@ class DoodlesController < ApplicationController
     render json: {upvotes: @doodle.votes.up.size,
                   downvotes: @doodle.votes.down.size,
                   id: @doodle.id}
+  end
+
+  def mine
+    @doodles = current_user.doodles
+    render 'index'
   end
 end

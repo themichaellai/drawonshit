@@ -22,4 +22,6 @@ class User < ActiveRecord::Base
         #user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  has_many :doodles
 end
