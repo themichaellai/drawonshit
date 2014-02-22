@@ -2,26 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.info, .image, .text {
-  display: inline-block;
-}
-
-.info {
-  vertical-align: middle
-}
-
-.upvote, .downvote, .score, .text {
-  font-size: 50px
-}
-
-.score {
-  text-align: center
-}
-
-.text {
-  padding-left: 20px
-}
-
 .doodle {
-  margin-left: 20px
+
+  margin-bottom: 30px;
+
+  .info, .image, .text {
+    display: inline-block;
+  }
+
+  .info {
+    vertical-align: middle;
+  }
+
+  .upvote, .downvote, .score, .text {
+    font-size: 50px;
+  }
+
+  .score {
+    text-align: center;
+  }
+
+  .text {
+    padding-left: 20px;
+  }
+
+  .image {
+    padding-left: 30px
+  }
+
 }
