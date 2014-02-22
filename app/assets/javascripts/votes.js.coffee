@@ -9,7 +9,7 @@ $(document).ready ->
   $(".upvote").click ->
     console.log "upvoted"
     doodleId = getIdFromId this.id
-    endpoint = "doodles/"+doodleId+"/upvote.js"
+    endpoint = "/doodles/"+doodleId+"/upvote.js"
     $.ajax({
       url: endpoint,
       type: "PUT",
@@ -19,7 +19,7 @@ $(document).ready ->
   $(".downvote").click ->
     console.log "donwvoted"
     doodleId = getIdFromId this.id
-    endpoint = "doodles/"+doodleId+"/downvote.js"
+    endpoint = "/doodles/"+doodleId+"/downvote.js"
     $.ajax({
       url: endpoint,
       type: "PUT",
