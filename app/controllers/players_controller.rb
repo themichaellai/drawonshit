@@ -15,4 +15,9 @@ class PlayersController < ApplicationController
       render 'new'
     end
   end
+
+  def draw
+    @doodle = Doodle.new
+    @player = Player.find params[:player_id]
+  end
 end
