@@ -1,0 +1,27 @@
+.navbar.navbar-default{role: "navigation"}
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{href: "#"} Doodle On UNC
+    .navbar-collapse.collapse
+      %ul.nav.navbar-nav
+        %li
+          %a{href: "#"} Top
+        %li
+          %a{href: "#"} Create
+        %li
+          %a{href: "#"} Recent
+        %li
+          %a{href: "#"} About
+        %li
+          %a{href: "#"} My Uploads
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          - if user_signed_in?
+            \#{link_to "Sign out", destroy_user_session_path,:method => :delete}
+          - else
+            \#{link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)}
