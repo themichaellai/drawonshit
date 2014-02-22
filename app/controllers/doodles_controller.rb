@@ -1,6 +1,6 @@
 class DoodlesController < ApplicationController
   def index
-    @doodles = Doodle.all
+    @doodles = Doodle.order(:votes)
   end
 
   def new
@@ -14,5 +14,10 @@ class DoodlesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def recent
+    @doodles = Doodle.order(:created_at)
+    render 'index'
   end
 end
