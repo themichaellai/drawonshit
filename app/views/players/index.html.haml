@@ -1,4 +1,11 @@
-- @players.each do |player|
-  .player
-    %h2= link_to player.name, player_draw_path(player)
-    = image_tag player.image.url
+- @players.each_slice(3) do |a, b, c|
+  .row
+    .col-xs-4
+      - if a
+        = link_to image_tag(a.image.url), player_draw_path(a)
+    .col-xs-4
+      - if b
+        = link_to image_tag(b.image.url), player_draw_path(b)
+    .col-xs-4
+      - if c
+        = link_to image_tag(c.image.url), player_draw_path(c)
