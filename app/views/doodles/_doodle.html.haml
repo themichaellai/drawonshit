@@ -1,0 +1,7 @@
+.doodle{id: "doodle-#{doodle.id}"}
+  .info
+    .upvote{id: "doodle-up-#{doodle.id}"} &#11014;
+    .score= doodle.votes.up.size - doodle.votes.down.size
+    .downvote{id: "doodle-down-#{doodle.id}"} &#11015;
+  .image= image_tag doodle.image.url
+  .text= "\"#{doodle.text}\""
