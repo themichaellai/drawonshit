@@ -1,4 +1,7 @@
-%p poop
 - @doodles.each do |doodle|
-  .doodle
+  .doodle{id: "doodle-#{doodle.id}"}
     = image_tag doodle.image.url
+    .upvotes= doodle.votes.up.size
+    .downvotes= doodle.votes.down.size
+    = link_to "Upvote", upvote_doodle_path(doodle), method: :put
+    = link_to "Downvote", downvote_doodle_path(doodle), method: :put
