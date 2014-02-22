@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 $(document).ready ->
   $('#player-sketch-image').load ->
     $canvas = $('#sketch')
@@ -11,7 +7,12 @@ $(document).ready ->
 
     $canvas.css('background-image', "url(#{$backgroundImage[0].src})")
 
+    $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], () ->
+      $('#sketch-tools').append("<a href='#sketch' data-color='" + this + "' style='background: " + this + ";'></a> ")
+    )
+
     $('#sketch').sketch() if $('#sketch').size()
+
     $('#doodle-form').on 'submit', (e) ->
       e.preventDefault()
       $canvas = $('#sketch')
