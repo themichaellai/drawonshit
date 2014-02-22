@@ -1,5 +1,7 @@
 class DoodlesController < ApplicationController
+  include ApplicationHelper
   before_filter :authenticate_user!, except: [:index, :recent]
+  before_filter :redirect_if_not_admin, only: :destroy
 
   def index
     @doodles = Doodle.order(:votes)
@@ -51,5 +53,15 @@ class DoodlesController < ApplicationController
   def mine
     @doodles = current_user.doodles
     render 'index'
+  end
+
+  def show
+    @doodle = Doodle.find(params[:id])
+  end
+
+  def destroy
+    @doodle = Doodle.find(params[:id])
+    @doodle.destroy
+    redirect_to doodles_path
   end
 end
