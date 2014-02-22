@@ -1,6 +1,7 @@
 $(document).ready ->
   $('#sketch').sketch()
-  $('#upload').bind 'click', ->
+  $('#doodle-form').on 'submit', (e) ->
+    e.preventDefault()
     $canvas = $('#sketch')
 
     #backgroundImage = new Image()
@@ -16,4 +17,5 @@ $(document).ready ->
     #context.drawImage(backgroundImage, 0, 0)
     context.drawImage(drawnImage, 0, 0)
 
-    console.log binderCanvas.toDataURL()
+    $('#doodle_image').val(binderCanvas.toDataURL())
+    $(this).off('submit').submit()
