@@ -11,19 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140222050809) do
+ActiveRecord::Schema.define(:version => 20140222174515) do
 
   create_table "doodles", :force => true do |t|
     t.integer  "votes"
     t.string   "text"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.integer  "cached_votes_total",    :default => 0
+    t.integer  "cached_votes_score",    :default => 0
+    t.integer  "cached_votes_up",       :default => 0
+    t.integer  "cached_votes_down",     :default => 0
+    t.integer  "cached_weighted_score", :default => 0
   end
+
+  add_index "doodles", ["cached_votes_down"], :name => "index_doodles_on_cached_votes_down"
+  add_index "doodles", ["cached_votes_score"], :name => "index_doodles_on_cached_votes_score"
+  add_index "doodles", ["cached_votes_total"], :name => "index_doodles_on_cached_votes_total"
+  add_index "doodles", ["cached_votes_up"], :name => "index_doodles_on_cached_votes_up"
+  add_index "doodles", ["cached_weighted_score"], :name => "index_doodles_on_cached_weighted_score"
 
   create_table "players", :force => true do |t|
     t.string   "name"

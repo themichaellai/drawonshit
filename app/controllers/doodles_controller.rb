@@ -6,7 +6,7 @@ class DoodlesController < ApplicationController
   before_filter :redirect_if_not_admin, only: :destroy
 
   def index
-    @doodles = Doodle.order(:votes)
+    @doodles = Doodle.order('cached_votes_score DESC')
   end
 
   def new
