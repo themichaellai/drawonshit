@@ -15,4 +15,8 @@ class DoodlesController < ApplicationController
       render 'new'
     end
   end
+
+  def recent
+    @doodles = Doodle.find(order: 'created_at DESC')
+  end
 end
