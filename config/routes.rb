@@ -5,6 +5,7 @@ Drawonshit::Application.routes.draw do
   resources :doodles, only: [:index, :show, :create] do 
     collection do
       get 'recent'
+      get 'mine'
     end
     member do
       put "upvote", to: "doodles#upvote" 
