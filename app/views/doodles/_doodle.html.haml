@@ -3,5 +3,6 @@
     .upvote{id: "doodle-up-#{doodle.id}"} &#11014;
     .score= doodle.votes.up.size - doodle.votes.down.size
     .downvote{id: "doodle-down-#{doodle.id}"} &#11015;
+    .social.fb-share-button{"data-href" => doodle_url(doodle), "data-type" => "button_count"}
   .image= link_to(image_tag(doodle.image.url), doodle_path(doodle))
   .text= "\"#{doodle.text}\""
