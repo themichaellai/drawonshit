@@ -8,6 +8,7 @@ gem 'rails', '3.2.16'
 gem 'sqlite3'
 gem 'paperclip', '~> 4.1'
 gem 'haml'
+gem 'friendly_id', '~> 4.0.0'
 
 gem 'bcrypt-ruby'
 gem 'omniauth-facebook'
