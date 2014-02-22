@@ -26,7 +26,11 @@ class DoodlesController < ApplicationController
 
   def upvote
     @doodle = Doodle.find(params[:id])
-    @doodle.liked_by current_user
+    if current_user.voted_up_on? @doodle
+      @doodle.unliked_by current_user
+    else
+      @doodle.liked_by current_user
+    end
     render json: {upvotes: @doodle.votes.up.size,
                   downvotes: @doodle.votes.down.size,
                   id: @doodle.id}
@@ -34,7 +38,11 @@ class DoodlesController < ApplicationController
 
   def downvote
     @doodle = Doodle.find(params[:id])
-    @doodle.downvote_from current_user
+    if current_user.voted_down_on? @doodle
+      @doodle.undisliked_by current_user
+    else
+      @doodle.downvote_from current_user
+    end
     render json: {upvotes: @doodle.votes.up.size,
                   downvotes: @doodle.votes.down.size,
                   id: @doodle.id}
