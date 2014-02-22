@@ -1,6 +1,6 @@
 class DoodlesController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!, except: [:index, :recent]
+  before_filter :authenticate_user!, except: [:index, :recent, :about]
   before_filter :redirect_if_not_admin, only: :destroy
 
   def index
