@@ -1,6 +1,8 @@
 class DoodlesController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!, except: [:index, :recent, :about, :show]
+  before_filter :prompt_if_not_signed_in,
+    except: [:index, :recent, :about, :show, :upvote, :downvote]
+  before_filter :authenticate_user!, only: [:upvote, :downvote]
   before_filter :redirect_if_not_admin, only: :destroy
 
   def index

@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!, only: [:create, :draw]
+  before_filter :prompt_if_not_signed_in, only: [:create, :draw]
   before_filter :redirect_if_not_admin, only: :new
   def index
     @players = Player.all

@@ -18,4 +18,6 @@
       }(document, 'script', 'facebook-jssdk'));
     = render partial: 'partials/navbar'
     .container
+      - if flash[:alert]
+        .alert.alert-info= flash[:alert]
       = yield
