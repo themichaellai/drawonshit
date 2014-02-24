@@ -24,7 +24,7 @@ class DoodlesController < ApplicationController
   end
 
   def recent
-    @doodles = Doodle.order('created_at DESC')
+    @doodles = Doodle.paginate(page: params[:page]).order('created_at DESC')
     render 'index'
   end
 
@@ -54,6 +54,7 @@ class DoodlesController < ApplicationController
 
   def mine
     @doodles = current_user.doodles
+    @dont = true
     render 'index'
   end
 
