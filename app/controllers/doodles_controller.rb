@@ -4,7 +4,7 @@ class DoodlesController < ApplicationController
   before_filter :redirect_if_not_admin, only: :destroy
 
   def index
-    @doodles = Doodle.order(:votes)
+    @doodles = Doodle.paginate(page: params[:page]).order(:votes)
   end
 
   def new

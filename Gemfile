@@ -15,6 +15,7 @@ gem 'devise'
 gem 'acts_as_votable', '~> 0.8.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'aws-sdk'
+gem 'will_paginate'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
