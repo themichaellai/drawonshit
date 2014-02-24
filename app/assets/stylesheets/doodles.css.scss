@@ -6,8 +6,15 @@
 
   margin-bottom: 30px;
 
+  height: 400px;
+
   .info, .image, .text {
     display: inline-block;
+  }
+
+  .text {
+    max-height: 400px;
+    max-widtH: 600px;
   }
 
   .info {
@@ -61,3 +68,6 @@
   font-size: 30px
 }
 
+img {
+  max-width: 350px;
+}

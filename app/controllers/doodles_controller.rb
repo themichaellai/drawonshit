@@ -1,10 +1,12 @@
 class DoodlesController < ApplicationController
   include ApplicationHelper
-  before_filter :authenticate_user!, except: [:index, :recent, :about]
+  before_filter :prompt_if_not_signed_in,
+    except: [:index, :recent, :about, :show, :upvote, :downvote]
+  before_filter :authenticate_user!, only: [:upvote, :downvote]
   before_filter :redirect_if_not_admin, only: :destroy
 
   def index
-    @doodles = Doodle.paginate(page: params[:page]).order(:votes)
+    @doodles = Doodle.paginate(page: params[:page]).order('cached_votes_score DESC')
   end
 
   def new

@@ -31,4 +31,5 @@ $(document).ready ->
       context.drawImage(drawnImage, 0, 0)
 
       $('#doodle_image').val(binderCanvas.toDataURL())
+      console.log binderCanvas.toDataURL()
       $(this).off('submit').submit()
